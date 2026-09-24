@@ -27,7 +27,10 @@ describe('Claim token expiry vs. account expiry (audit)', () => {
     const module: TestingModule = await Test.createTestingModule({
       providers: [
         TokenVerificationProvider,
-        { provide: getRepositoryToken(Account), useValue: mockAccountRepository },
+        {
+          provide: getRepositoryToken(Account),
+          useValue: mockAccountRepository,
+        },
         { provide: ConfigService, useValue: mockConfigService },
       ],
     }).compile();

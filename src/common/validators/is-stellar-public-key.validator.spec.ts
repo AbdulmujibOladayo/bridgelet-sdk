@@ -29,11 +29,8 @@ describe('IsStellarPublicKey (StrKey checksum audit)', () => {
     '',
     'MDV3BRGE2BXK5JMGAEDGE5QWAY2DBK5V2KEG762Y5GH4LPC5RSPRPTTJ', // wrong prefix
     'G0000000000000000000000000000000000000000000000000000', // '0' isn't valid base32
-  ])(
-    'rejects malformed input %p',
-    async (key) => {
-      const dto = Object.assign(new Dto(), { key });
-      expect(await validate(dto)).toHaveLength(1);
-    },
-  );
+  ])('rejects malformed input %p', async (key) => {
+    const dto = Object.assign(new Dto(), { key });
+    expect(await validate(dto)).toHaveLength(1);
+  });
 });

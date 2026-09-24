@@ -21,7 +21,9 @@ describe('POST /claims/redeem throttling', () => {
         {
           provide: ClaimsService,
           useValue: {
-            redeemClaim: jest.fn().mockRejectedValue(new Error('invalid token')),
+            redeemClaim: jest
+              .fn()
+              .mockRejectedValue(new Error('invalid token')),
           },
         },
       ],

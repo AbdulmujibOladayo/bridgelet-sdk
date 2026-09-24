@@ -77,7 +77,9 @@ describe('sanitizeMetadata', () => {
   it.each(['__proto__', 'constructor', 'prototype'])(
     'drops the dangerous key "%s" without polluting the object prototype',
     (key) => {
-      const payload = JSON.parse(`{"${key}": {"polluted": true}, "safe": "ok"}`);
+      const payload = JSON.parse(
+        `{"${key}": {"polluted": true}, "safe": "ok"}`,
+      );
       const result = sanitizeMetadata(payload) as Record<string, unknown>;
       expect(result).toHaveProperty('safe', 'ok');
       expect(({} as Record<string, unknown>).polluted).toBeUndefined();
